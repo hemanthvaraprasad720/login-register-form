@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login & Register Form</title>
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Style -->
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="form-box col-md-6 col-lg-4">
+
+    <div class="form-toggle">
+      <button class="toggle-btn" onclick="showLogin()">Login</button> |
+      <button class="toggle-btn" onclick="showRegister()">Register</button>
+    </div>
+
+    <!-- Login Form -->
+    <form id="loginForm">
+      <h4 class="text-center mb-4">Login</h4>
+      <div class="mb-3">
+        <label>Email</label>
+        <input type="email" class="form-control" id="loginEmail" required>
+      </div>
+      <div class="mb-3 position-relative">
+        <label>Password</label>
+        <input type="password" class="form-control" id="loginPassword" required>
+        <span class="position-absolute top-50 end-0 translate-middle-y pe-3 mt-2" onclick="togglePassword('loginPassword')"><i class="fa-regular fa-eye"></i></span>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Login</button>
+    </form>
+
+    <!-- Register Form -->
+    <form id="registerForm" class="d-none">
+      <h4 class="text-center mb-4">Register</h4>
+      <div class="mb-3">
+        <label>Full Name</label>
+        <input type="text" class="form-control" id="regName" required>
+      </div>
+      <div class="mb-3">
+        <label>Email</label>
+        <input type="email" class="form-control" id="regEmail" required>
+      </div>
+      <div class="mb-3 position-relative">
+        <label>Password</label>
+        <input type="password" class="form-control" id="regPassword" required>
+        <span class="position-absolute top-50 end-0 translate-middle-y pe-3 mt-2" onclick="togglePassword('regPassword')"><i class="fa-regular fa-eye"></i></span>
+      </div>
+      <div class="mb-3 position-relative">
+        <label>Confirm Password</label>
+        <input type="password" class="form-control" id="regConfirm" required>
+        <span class="position-absolute top-50 end-0 translate-middle-y pe-3 mt-2" onclick="togglePassword('regConfirm')"><i class="fa-regular fa-eye"></i></span>
+      </div>
+      <button type="submit" class="btn btn-success w-100">Register</button>
+    </form>
+
+  </div>
+</div>
+
+<!-- Fontawesome -->
+<script src="https://kit.fontawesome.com/76582697ab.js" crossorigin="anonymous"></script>
+<!-- JS Script -->
+<script src="./script.js"></script>
+</body>
+</html>
