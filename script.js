@@ -1,5 +1,6 @@
 const loginForm = document.getElementById('loginForm');
 const registerForm = document.getElementById('registerForm');
+const alertBox = document.getElementById('alertBox');
 
 function showLogin() {
   loginForm.classList.remove('d-none');
@@ -16,20 +17,32 @@ function togglePassword(id) {
   input.type = input.type === 'password' ? 'text' : 'password';
 }
 
+// ✅ Custom Alert Function
+function showAlert(message, type = "success") {
+  alertBox.innerText = message;
+  alertBox.className = `alert alert-${type}`; // eg: alert-success, alert-danger
+  alertBox.classList.remove('d-none');
+
+  setTimeout(() => {
+    alertBox.classList.add('d-none');
+  }, 3000);
+}
+
+// ✅ Login Form Logic
 loginForm.addEventListener('submit', function (e) {
   e.preventDefault();
   const email = document.getElementById('loginEmail').value;
   const password = document.getElementById('loginPassword').value;
 
   if (email && password.length >= 6) {
-    alert('Login Successful!');
-    // Clear form after login
+    showAlert("✅ Login successful!", "success");
     loginForm.reset();
   } else {
-    alert('Invalid credentials. Password must be 6 characters.!');
+    showAlert('❌ Invalid credentials. Password must be at least 6 characters!', "danger");
   }
 });
 
+// ✅ Register Form Logic
 registerForm.addEventListener('submit', function (e) {
   e.preventDefault();
   const name = document.getElementById('regName').value;
@@ -38,12 +51,12 @@ registerForm.addEventListener('submit', function (e) {
   const confirm = document.getElementById('regConfirm').value;
 
   if (pass !== confirm) {
-    alert('Passwords do not match!');
+    showAlert('❌ Passwords do not match!', "danger");
   } else if (pass.length < 6) {
-    alert('Password must be at least 6 characters.');
+    showAlert('❌ Password must be at least 6 characters.', "danger");
   } else {
-    alert('Registration Successful!');
-    registerForm.reset();    
-    showLogin();            
+    showAlert('✅ Registration Successful!', "success");
+    registerForm.reset();
+    showLogin();
   }
 });
